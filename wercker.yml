@@ -43,3 +43,14 @@ build:
         name: go test
         code: |
           go test ./...
+
+deploy:
+  steps:
+    - internal/docker-push:
+      username: $USERNAME
+      password: $PASSWORD
+      cmd: /pipeline/source/go-service
+      port: "8080"
+      tag: latest
+      repository: ctbate/go-service
+      registry: 
